@@ -1,5 +1,6 @@
 package practica6;
 
+
 public class Lamparita {
 	
 	// Atributo de instancia (cada objeto lamparita tendra su estado)
