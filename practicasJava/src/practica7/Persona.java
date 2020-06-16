@@ -3,7 +3,7 @@ package practica7;
 import practica7.DocumentoPersonal.TipoDocumento;
 import practica7.Genero.GenerosHabilitados;
 
-public class Persona {
+public abstract class Persona {
 
 	private String nombre;
 	private Genero genero;
@@ -11,8 +11,8 @@ public class Persona {
 	protected int edad;
 	private DocumentoPersonal documento;
 	
-	public Persona() {
-		nombre = "";
+	public Persona(String nombre) {
+		this.nombre = nombre;
 		genero = new Genero(GenerosHabilitados.Indefinido);
 		genero2 = Genero2.Indefinido;
 	}
@@ -59,4 +59,10 @@ public class Persona {
 		return "Nombre: " + nombre + ", documento: " + documento;
 	}
 	
+	public void descripcion() {
+		System.out.println("Persona: " + this);
+	}
+	
+	// Metodo abstracto
+	public abstract void controlarAsistencia();
 }

@@ -1,14 +1,26 @@
 package practica7;
 
-public class Empleado extends Persona {
+public abstract class Empleado extends Persona {
 	private int legajo;
 	
 	// Constructor implicito
 	/*
 	public Empleado() {
-		super();
+		super();			// Persona()
 	}
 	*/
+	
+	public Empleado() {
+		super("Nombre Empleado");
+	}
+	
+	public int getLegajo() {
+		return legajo;
+	}
+	
+	public void setLegajo(int legajo) {
+		this.legajo = legajo;
+	}
 	
 	@Override
 	public String toString() {

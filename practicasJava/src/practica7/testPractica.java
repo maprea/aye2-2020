@@ -7,12 +7,12 @@ public final class testPractica {
 	
 	public static void main(String[] args) {
 		// Inicializacion de instancias
-		Persona p1 = new Persona();
+		Persona p1 = new Estudiante("Estudiante p1");
 		Estudiante es1 = new Estudiante();
-		Empleado em1 = new Empleado();
+		Empleado em1 = new Docente();
 		
 		p1.setDocumento(TipoDocumento.DNI, 12345678);
-		p1.setNombre("Laura");
+		//p1.setNombre("Laura");
 		p1.setEdad(25);
 		p1.setGenero(new Genero(GenerosHabilitados.Femenino));
 		
@@ -43,12 +43,13 @@ public final class testPractica {
 			System.out.println("Call toString() de instancia " +
 					p.getClass().getSimpleName() +
 					" -> " + p);							// dynamic binding de metodo toString()
+			p.controlarAsistencia();						// dynamic binding de metodo controlarAsistencia()
 		}
 		
 		// Casting
 		String texto;
 		
-		Persona p2 = new Empleado();						// Upcasting (implicito)
+		Persona p2 = new Administrativo();					// Upcasting (implicito)
 		p2.setNombre("Juana");
 		if (p2 instanceof Empleado) {
 			texto = ((Empleado) p2).getNombreEdad();		// Downcasting explicito
@@ -64,7 +65,15 @@ public final class testPractica {
 		}
 		
 		
-
+		// Sobre carga metodos
+		for (Persona p : personas) {
+			p.descripcion();								// Bindeo dinamico (RT)
+			if (p instanceof Estudiante) {
+				((Estudiante) p).descripcion(1);			// Bindeo estatico (CT)
+				texto = ((Estudiante) p).descripcion("1");	// Bindeo estatico (CT)
+			}
+		}
+		
+		
 	}
-
 }
